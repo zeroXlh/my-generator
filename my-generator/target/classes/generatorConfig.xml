@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<properties resource="jdbc.properties" />
+
+	<classPathEntry
+		location="E:\repository\mysql\mysql-connector-java\5.0.8\mysql-connector-java-5.0.8.jar" />
+<!-- 	<classPathEntry -->
+<!-- 		location="E:\repository\mysql\mysql-connector-java\6.0.6\mysql-connector-java-6.0.6.jar" /> -->
+
+	<context id="my" targetRuntime="MyBatis3">
+	 <!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表； 
+	    一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖 -->
+<!-- 		<property name="autoDelimitKeywords" value="true" />     -->
+		<!-- 生成的Java文件的编码 -->
+<!-- 		<property name="javaFileEncoding" value="UTF-8" />     -->
+		<!-- 格式化java代码 -->
+<!-- 		<property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter" />     -->
+		<!-- 格式化XML代码 -->
+<!-- 		<property name="xmlFormatter" 	value="org.mybatis.generator.api.dom.DefaultXmlFormatter" />      -->
+		<!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
+<!-- 		<property name="beginningDelimiter" value="`" /> -->
+<!-- 		<property name="endingDelimiter" value= "`" />      -->
+		<commentGenerator>
+			<property name="suppressDate" value="false" />
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!-- mysql数据库连接 -->
+		<jdbcConnection driverClass="${jdbc.driver}"
+			connectionURL="${jdbc.url}" userId="${jdbc.username}"
+			password="${jdbc.password}" />
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- 生成model实体类文件位置 -->
+		<javaModelGenerator targetPackage="${java.entity}"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- 生成mapper.xml配置文件位置 -->
+		<sqlMapGenerator targetPackage="${mapper.mapper}"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- 生成mapper接口文件位置 -->
+		<javaClientGenerator targetPackage="${mapper.dao}"
+			targetProject="src/main/java" type="XMLMAPPER">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<!-- 需要生成的实体类对应的表名，多个实体类复制多份该配置即可 -->
+		<!-- 		domainObjectName="JjsProduct"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false"
+		 -->
+<!-- 	enableInsert="true" -->
+<!--        enableSelectByPrimaryKey="true" -->
+<!--        enableUpdateByPrimaryKey="true" -->
+<!--        enableDeleteByPrimaryKey="true" -->
+		<table tableName="jjs_operate_log"
+       enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+		</table>
+
+	</context>
+</generatorConfiguration>
